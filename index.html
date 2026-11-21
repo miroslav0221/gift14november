@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0B0920">
+  <title>С днём рождения</title>
+  <meta name="description" content="Фотографии и пожелания к твоему 21-летию.">
+  <meta property="og:title" content="С днём рождения">
+  <meta property="og:description" content="Открытка к твоему 21-летию">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4c3 4 5 6 5 10a5 5 0 0 1-10 0c0-4 2-6 5-10z' fill='%23FFC46B'/%3E%3Crect x='14' y='18' width='4' height='11' rx='1' fill='%23F2C9CF'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-scene="intro">
+  <div class="sky" aria-hidden="true"></div>
+  <div class="sun" aria-hidden="true"></div>
+  <canvas class="stars" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="progress" role="progressbar" aria-label="Прогресс истории" aria-valuemin="1" aria-valuemax="9" aria-valuenow="1"></div>
+
+  <button class="music" type="button" hidden aria-pressed="false" aria-label="Включить музыку">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17.5a2.5 2.5 0 1 1-2.5-2.5H9V5l11-2v12.5a2.5 2.5 0 1 1-2.5-2.5H20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <main id="story">
+
+    <!-- 0. Вступление -->
+    <section class="scene scene-intro is-active" data-scene="intro" aria-labelledby="intro-title">
+      <div class="inner">
+        <h1 id="intro-title" class="age" tabindex="-1"><span data-text="age"></span></h1>
+        <p class="intro-line intro-line-1" data-text="intro.lines.0"></p>
+        <p class="intro-line intro-line-2" data-text="intro.lines.1"></p>
+        <button class="btn intro-btn" type="button" data-action="next" data-text="intro.button"></button>
+      </div>
+    </section>
+
+    <!-- 1. Свечи -->
+    <section class="scene scene-candles" data-scene="candles" aria-labelledby="candles-title">
+      <div class="inner">
+        <h2 id="candles-title" class="title" tabindex="-1" data-reveal data-text="candles.title"></h2>
+        <p class="lead" data-reveal data-text="candles.text"></p>
+        <div class="cake" data-reveal>
+          <svg class="cake-art" viewBox="0 0 360 300" aria-hidden="true">
+            <defs>
+              <linearGradient id="tier" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#6A3A72"/>
+                <stop offset="1" stop-color="#3B1F4C"/>
+              </linearGradient>
+              <linearGradient id="tierSide" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#000" stop-opacity=".28"/>
+                <stop offset=".45" stop-color="#000" stop-opacity="0"/>
+                <stop offset="1" stop-color="#000" stop-opacity=".34"/>
+              </linearGradient>
+              <linearGradient id="frost" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#FBE1DF"/>
+                <stop offset="1" stop-color="#E9AEB8"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="180" cy="274" rx="172" ry="22" fill="#1B1230" opacity=".7"/>
+            <ellipse cx="180" cy="270" rx="166" ry="20" fill="none" stroke="#FFC46B" stroke-opacity=".35"/>
+            <path d="M30 210 V266 A150 30 0 0 0 330 266 V210 Z" fill="url(#tier)"/>
+            <path d="M30 210 V266 A150 30 0 0 0 330 266 V210 Z" fill="url(#tierSide)"/>
+            <path d="M30 246 A150 30 0 0 0 330 246" fill="none" stroke="#FFC46B" stroke-opacity=".55" stroke-width="1.2"/>
+            <ellipse cx="180" cy="210" rx="150" ry="30" fill="#E3A4B0"/>
+            <path d="M60 150 V208 A120 26 0 0 0 300 208 V150 Z" fill="url(#tier)"/>
+            <path d="M60 150 V208 A120 26 0 0 0 300 208 V150 Z" fill="url(#tierSide)"/>
+            <path d="M60 150 V166 Q66 178 72 168 Q80 186 90 172 Q100 190 112 176 Q124 192 136 178 Q150 194 164 180 Q180 196 196 180 Q210 194 224 178 Q236 192 248 176 Q260 190 270 172 Q280 186 288 168 Q294 178 300 166 V150 Z" fill="url(#frost)"/>
+            <ellipse cx="180" cy="150" rx="120" ry="26" fill="url(#frost)"/>
+            <path d="M60 196 A120 26 0 0 0 300 196" fill="none" stroke="#FFC46B" stroke-opacity=".5" stroke-width="1.2"/>
+          </svg>
+          <div class="candles" aria-label="Свечи"></div>
+        </div>
+        <div class="candle-actions" data-reveal>
+          <button class="btn btn-ghost mic-btn" type="button" data-text="candles.micButton"></button>
+        </div>
+        <div class="after" data-after>
+          <p class="hand-note" data-text="candles.done"></p>
+          <button class="btn" type="button" data-action="next" data-text="candles.button"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Первое фото -->
+    <section class="scene scene-first" data-scene="first" aria-labelledby="first-title">
+      <div class="inner">
+        <h2 id="first-title" class="title" tabindex="-1" data-reveal data-text="first.title"></h2>
+        <figure class="polaroid scratch" data-reveal>
+          <div class="photo">
+            <img alt="" data-src="first.photo" data-alt="first.alt">
+            <canvas class="foil" aria-label="Золотой слой, сотри его пальцем"></canvas>
+          </div>
+          <figcaption class="cap" data-text="first.caption"></figcaption>
+        </figure>
+        <p class="hint" data-reveal data-hide-after data-text="first.hint"></p>
+        <div class="after" data-after>
+          <p class="lead" data-text="first.text"></p>
+          <button class="btn" type="button" data-action="next" data-text="first.button"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Воспоминания -->
+    <section class="scene scene-memories" data-scene="memories" aria-labelledby="memories-title">
+      <div class="inner">
+        <h2 id="memories-title" class="title" tabindex="-1" data-reveal data-text="memories.title"></h2>
+        <div class="stack" data-reveal></div>
+        <p class="note" aria-live="polite"></p>
+        <p class="hint" data-reveal data-hide-after data-text="memories.hint"></p>
+        <div class="after" data-after>
+          <p class="hand-note" data-text="memories.done"></p>
+          <button class="btn" type="button" data-action="next" data-text="memories.button"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Снимки из путешествий -->
+    <section class="scene scene-travels" data-scene="travels" aria-labelledby="travels-title">
+      <div class="inner">
+        <h2 id="travels-title" class="title" tabindex="-1" data-reveal data-text="travels.title"></h2>
+        <div class="travel-prints" data-reveal>
+          <figure class="travel-print">
+            <img alt="" data-src="travels.photos.0.photo" data-alt="travels.photos.0.alt">
+            <figcaption data-text="travels.photos.0.caption"></figcaption>
+          </figure>
+          <figure class="travel-print">
+            <img alt="" data-src="travels.photos.1.photo" data-alt="travels.photos.1.alt">
+            <figcaption data-text="travels.photos.1.caption"></figcaption>
+          </figure>
+          <figure class="travel-print">
+            <img alt="" data-src="travels.photos.2.photo" data-alt="travels.photos.2.alt">
+            <figcaption data-text="travels.photos.2.caption"></figcaption>
+          </figure>
+        </div>
+        <p class="lead" data-reveal data-text="travels.wish"></p>
+        <button class="btn" type="button" data-action="next" data-reveal data-text="travels.button"></button>
+      </div>
+    </section>
+
+    <section class="scene scene-coast" data-scene="coast" aria-labelledby="coast-title">
+      <div class="inner">
+        <h2 class="title" id="coast-title" tabindex="-1" data-text="coast.title" data-reveal></h2>
+        <div class="coast-prints" data-reveal>
+          <figure class="print port-print">
+            <img alt="" data-src="coast.departure.photo" data-alt="coast.departure.alt">
+            <figcaption data-text="coast.departure.caption"></figcaption>
+          </figure>
+          <figure class="print shore-print">
+            <img alt="" data-src="coast.shore.photo" data-alt="coast.shore.alt">
+            <figcaption data-text="coast.shore.caption"></figcaption>
+          </figure>
+        </div>
+        <p class="lead" data-text="coast.wish" data-reveal></p>
+        <button class="btn" type="button" data-action="next" data-text="coast.button" data-reveal></button>
+      </div>
+    </section>
+
+    <section class="scene scene-concert" data-scene="concert" aria-labelledby="concert-title">
+      <div class="inner">
+        <h2 class="title" id="concert-title" tabindex="-1" data-text="concert.title" data-reveal></h2>
+        <div class="concert-album" data-reveal>
+          <figure class="concert-film">
+            <video controls playsinline preload="none" aria-label="Танцы в свете сцены"></video>
+            <figcaption data-text="concert.caption"></figcaption>
+          </figure>
+          <div class="concert-stills">
+            <figure class="print"><img alt="" data-src="concert.mirror.photo" data-alt="concert.mirror.alt"><figcaption data-text="concert.mirror.caption"></figcaption></figure>
+            <figure class="print"><img alt="" data-src="concert.night.photo" data-alt="concert.night.alt"><figcaption data-text="concert.night.caption"></figcaption></figure>
+          </div>
+        </div>
+        <button class="btn" type="button" data-action="next" data-text="concert.button" data-reveal></button>
+      </div>
+    </section>
+
+    <!-- 5. Созвездие -->
+    <section class="scene scene-stars" data-scene="stars" aria-labelledby="stars-title">
+      <div class="inner">
+        <h2 id="stars-title" class="title" tabindex="-1" data-reveal data-text="stars.title"></h2>
+        <p class="hint" data-reveal data-hide-after data-text="stars.hint"></p>
+        <svg class="constellation" viewBox="0 0 100 100" data-reveal role="group" aria-label="Созвездие">
+          <defs>
+            <radialGradient id="starGlow">
+              <stop offset="0" stop-color="#FFE7B0" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#FFC46B" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6"/></filter>
+          </defs>
+          <g class="dust"></g>
+          <path class="heart-fill" d=""/>
+          <g class="lines"></g>
+          <g class="points"></g>
+        </svg>
+        <div class="after" data-after>
+          <p class="hand-note" data-text="stars.done"></p>
+          <button class="btn" type="button" data-action="next" data-text="stars.button"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Записка -->
+    <section class="scene scene-letter" data-scene="letter" aria-labelledby="letter-title">
+      <div class="inner">
+        <h2 id="letter-title" class="title" tabindex="-1" data-reveal data-text="letter.title"></h2>
+        <button class="envelope" type="button" data-reveal aria-label="Открыть конверт">
+          <span class="env-back"></span>
+          <span class="env-letter">
+            <img alt="" data-src="letter.photo" data-alt="letter.alt">
+            <span data-text="letter.letterText"></span>
+          </span>
+          <span class="env-front"></span>
+          <span class="env-flap"></span>
+          <span class="env-seal" data-text="age"></span>
+        </button>
+        <p class="hint" data-reveal data-hide-after data-text="letter.hint"></p>
+        <div class="after" data-after>
+          <button class="btn" type="button" data-action="next" data-text="letter.button"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Финал -->
+    <section class="scene scene-final" data-scene="final" aria-labelledby="final-title">
+      <div class="inner">
+        <h2 id="final-title" class="final-title" tabindex="-1" data-text="final.title"></h2>
+        <p class="final-text" data-text="final.text"></p>
+        <p class="signature" data-text="final.signature"></p>
+        <button class="btn btn-ghost replay" type="button" data-text="final.replay"></button>
+      </div>
+    </section>
+
+  </main>
+
+  <canvas class="petals" aria-hidden="true"></canvas>
+
+  <script src="story.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
