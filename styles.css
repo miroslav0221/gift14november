@@ -681,7 +681,7 @@ main {
   position: relative;
   width: var(--w);
   aspect-ratio: 3 / 2;
-  margin: 110px auto 0;
+  margin: 28px auto 0;
   padding: 0;
   border: 0;
   background: none;
@@ -706,16 +706,17 @@ main {
   background: var(--paper);
   border-radius: 4px;
   display: grid !important;
-  grid-template-columns: 38% 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   align-content: start;
   align-items: center;
-  gap: 8%;
-  padding: 4%;
+  gap: 12px;
+  padding: 16px;
 
   color: var(--paper-ink);
   font-family: var(--hand);
-  font-size: calc(var(--w) / 13);
-  line-height: 1.05;
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
   text-wrap: balance;
   z-index: 1;
   transition: transform 1.1s var(--ease-out) .45s;
@@ -769,19 +770,37 @@ main {
   transition: opacity .3s ease, transform .4s ease;
 }
 .envelope.open .env-seal { opacity: 0; transform: translate(-50%, -50%) scale(.6); }
-.envelope.open .env-flap { transform: rotateX(180deg); z-index: 0; }
-.envelope.open .env-letter { transform: translateY(-50%); }
-.envelope.open .env-letter img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  padding: 3px;
-  background: white;
-  box-shadow: 0 2px 5px #41242c40;
-  rotate: -3deg;
+.envelope.open {
+  --pocket-height: calc(var(--w) * .4);
+  aspect-ratio: auto;
+  padding-bottom: calc(var(--pocket-height) - 10px);
+  cursor: default;
 }
-.env-letter > * { opacity: 1; }
-.envelope.open { cursor: default; }
+.envelope.open .env-back, .envelope.open .env-front {
+  top: auto;
+  height: var(--pocket-height);
+}
+.envelope.open .env-flap {
+  top: calc(100% - var(--pocket-height));
+  height: calc(var(--pocket-height) * .62);
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+.envelope.open .env-letter {
+  position: relative;
+  inset: auto;
+  width: 94%;
+  height: auto;
+  margin-inline: auto;
+  box-shadow: 0 4px 16px #41242c30;
+  animation: letter-out .8s var(--ease-out) both;
+}
+.envelope.open .env-letter > * { opacity: 1; }
+@keyframes letter-out {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
 /* ───────── 7. Финал ───────── */
 .final-title {
   margin: 0;
